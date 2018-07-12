@@ -102,7 +102,8 @@ export const otherRouter = {
 };
 
 // 作为Main组件的子页面展示并且在左侧菜单显示的路由写在appRouter里
-export const appRouter = [{
+export const appRouter = [
+    {
         path: '/access',
         icon: 'key',
         name: 'access',
@@ -352,6 +353,20 @@ export const appRouter = [{
             name: 'errorpage_index',
             component: () =>
                 import ('@/views/error-page/error-page.vue')
+        }]
+    },
+    {
+        path: '/article/list',
+        icon: 'university',
+        title: '文章列表',
+        name: 'article',
+        component: Main,
+        children: [{
+            path: 'index',
+            title: '文章列表',
+            name: 'article_list',
+            component: () =>
+                import ('@/views/article/list.vue')
         }]
     }
 ];
