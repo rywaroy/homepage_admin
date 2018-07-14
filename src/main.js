@@ -7,8 +7,12 @@ import App from './app.vue';
 import '@/locale';
 import 'iview/dist/styles/iview.css';
 import util from './libs/util';
+import axios from './libs/axios';
+import API from './api/api';
 
 Vue.use(iView);
+Vue.prototype.$http = axios.Axios;
+Vue.prototype.API = API;
 
 new Vue({
 	el: '#app',
