@@ -355,13 +355,13 @@ export const appRouter = [{
 		}]
 	},
 	{
-		path: '/article/list',
+		path: '/article',
 		icon: 'university',
 		title: '文章列表',
 		name: 'article',
 		component: Main,
 		children: [{
-			path: 'index',
+			path: 'list',
 			title: '文章列表',
 			name: 'article_list',
 			component: () =>
