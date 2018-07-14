@@ -42,7 +42,7 @@
 		data() {
 			return {
 				form: {
-					userName: '',
+					userName: 'admin',
 					password: '',
 				},
 				rules: {
@@ -68,8 +68,10 @@
 							password: this.form.password,
 						}).then(res => {
 							Cookies.set('user', res.data.data.name);
+							Cookies.set('password', this.form.password);
 							Cookies.set('token', res.data.data.token);
 							Cookies.set('access', 0);
+							localStorage.setItem('avatorImgPath', res.data.data.avatar);
 							this.$router.push({
 								name: 'home_index',
 							});

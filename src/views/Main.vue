@@ -34,7 +34,7 @@
                 <div class="header-avator-con">
                     <full-screen v-model="isFullScreen" @on-change="fullscreenChange"></full-screen>
                     <lock-screen></lock-screen>
-                    <message-tip v-model="mesCount"></message-tip>
+                    <!-- <message-tip v-model="mesCount"></message-tip> -->
                     <theme-switch></theme-switch>
                     
                     <div class="user-dropdown-menu-con">
@@ -73,7 +73,7 @@
     import breadcrumbNav from './main-components/breadcrumb-nav.vue';
     import fullScreen from './main-components/fullscreen.vue';
     import lockScreen from './main-components/lockscreen/lockscreen.vue';
-    import messageTip from './main-components/message-tip.vue';
+    // import messageTip from './main-components/message-tip.vue';
     import themeSwitch from './main-components/theme-switch/theme-switch.vue';
     import Cookies from 'js-cookie';
     import util from '@/libs/util.js';
@@ -86,7 +86,7 @@
             breadcrumbNav,
             fullScreen,
             lockScreen,
-            messageTip,
+            // messageTip,
             themeSwitch,
             scrollBar
         },
@@ -120,9 +120,9 @@
             menuTheme () {
                 return this.$store.state.app.menuTheme;
             },
-            mesCount () {
-                return this.$store.state.app.messageCount;
-            }
+            // mesCount () {
+            //     return this.$store.state.app.messageCount;
+            // }
         },
         methods: {
             init () {

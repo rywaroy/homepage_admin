@@ -51,7 +51,11 @@ export default {
     },
     methods: {
         validator () {
-            return true; // 你可以在这里写密码验证方式，如发起ajax请求将用户输入的密码this.password与数据库用户密码对比
+            if (this.password === Cookies.get('password')) {
+                return true;
+            } else {
+                return false;
+            }
         },
         handleClickAvator () {
             this.avatorLeft = '-180px';
