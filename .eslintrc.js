@@ -1,5 +1,9 @@
 module.exports = {
-    "extends": "airbnb-base",
+    extends: ['plugin:vue/essential', 'airbnb-base'],
+    // required to lint *.vue files
+    plugins: [
+        'vue'
+    ],
     rules: {
         'max-len': 0,
         'no-plusplus': 0,
