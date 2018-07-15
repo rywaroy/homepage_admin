@@ -1,5 +1,8 @@
 <template>
-  <div>
+  <div class="article__list">
+    <div class="article__list-add">
+      <Button type="primary" @click="add()">+ 文章</Button>
+    </div>
     <Table border :columns="columns" :data="list"></Table>
     <div class="article__list-page">
       <Page :total="total" :current.sync="page" :page-size="limit"></Page>
@@ -29,7 +32,7 @@ export default {
               },
               on: {
                 click: () => {
-                  console.log(params.row.id);
+                  this.linkInfo(params.row.id);
                 },
               },
             }, params.row.title)
@@ -122,6 +125,12 @@ export default {
       }).then(() => {
         this.getList();
       });
+    },
+    add() { // 增加文章，跳转详情页
+      this.$router.push({ name: 'article_add' });
+    },
+    linkInfo(id) { // 跳转文章详情
+      this.$router.push({ path: `/article/info/${id}` });
     },
   },
   watch: {
