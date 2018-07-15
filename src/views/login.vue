@@ -36,7 +36,6 @@
 
 <script>
 	import Cookies from 'js-cookie';
-	import axios from 'axios';
 
 	export default {
 		data() {
@@ -55,8 +54,8 @@
 						required: true,
 						message: '密码不能为空',
 						trigger: 'blur',
-					}]
-				}
+					}],
+				},
 			};
 		},
 		methods: {
@@ -75,11 +74,11 @@
 							this.$router.push({
 								name: 'home_index',
 							});
-						})
+						});
 					}
 				});
-			}
-		}
+			},
+		},
 	};
 </script>
 
