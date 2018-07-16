@@ -97,7 +97,35 @@ export const otherRouter = {
 			name: 'message_index',
 			component: () =>
 				import ('@/views/message/message.vue')
-		}
+		},
+		{
+			path: 'article/info',
+			title: '新增文章',
+			name: 'article_add',
+			component: () =>
+				import ('@/views/article/info.vue')
+		},
+		{
+			path: 'article/info/:id',
+			title: '文章详情',
+			name: 'article_info',
+			component: () =>
+				import ('@/views/article/info.vue')
+		},
+		{
+			path: 'learn/info',
+			title: '新增笔记',
+			name: 'learn_add',
+			component: () =>
+				import ('@/views/learn/info.vue')
+		},
+		{
+			path: 'learn/info/:id',
+			title: '笔记详情',
+			name: 'learn_info',
+			component: () =>
+				import ('@/views/learn/info.vue')
+		},
 	]
 };
 
@@ -360,13 +388,31 @@ export const appRouter = [{
 		title: '文章列表',
 		name: 'article',
 		component: Main,
-		children: [{
-			path: 'list',
-			title: '文章列表',
-			name: 'article_list',
-			component: () =>
+		children: [
+			{
+				path: '/',
+				title: '文章列表',
+				name: 'article_list',
+				component: () =>
 				import ('@/views/article/list.vue')
-		}]
+			},
+		]
+	},
+	{
+		path: '/learn',
+		icon: 'university',
+		title: '学习笔记',
+		name: 'learn',
+		component: Main,
+		children: [
+			{
+				path: '/',
+				title: '学习笔记',
+				name: 'learn_list',
+				component: () =>
+				import ('@/views/learn/list.vue')
+			},
+		]
 	}
 ];
 
