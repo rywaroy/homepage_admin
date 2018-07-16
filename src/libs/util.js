@@ -7,7 +7,7 @@ let util = {
 
 };
 util.title = function (title, vm) {
-    let iTitle = 'iView admin';
+    let iTitle = '个人主页后台';
     if (title) {
         iTitle += ' - ' + (title.i18n ? vm.$t(title.i18n) : title);
     }
