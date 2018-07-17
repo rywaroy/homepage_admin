@@ -6,6 +6,7 @@ import store from './store';
 import App from './app.vue';
 import '@/locale';
 import 'iview/dist/styles/iview.css';
+import '@/styles/common.less';
 import util from './libs/util';
 import axios from './libs/axios';
 import API from './api/api';
