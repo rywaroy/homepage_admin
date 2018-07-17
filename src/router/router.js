@@ -413,6 +413,22 @@ export const appRouter = [{
 				import ('@/views/learn/list.vue')
 			},
 		]
+	},
+	{
+		path: '/album',
+		icon: 'university',
+		title: '相册',
+		name: 'album',
+		component: Main,
+		children: [
+			{
+				path: '/',
+				title: '相册',
+				name: 'album_list',
+				component: () =>
+				import ('@/views/album/list.vue')
+			},
+		]
 	}
 ];
 
