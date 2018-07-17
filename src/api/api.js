@@ -12,4 +12,5 @@ export default {
   learn_add: '/learn/add',
   learn_info: '/learn/info',
   learn_update: '/learn/update',
+  album_list: '/album/album',
 };
