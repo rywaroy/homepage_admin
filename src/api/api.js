@@ -13,4 +13,5 @@ export default {
   learn_info: '/learn/info',
   learn_update: '/learn/update',
   album_list: '/album/album',
+  album_delete: '/album/album/delete',
 };

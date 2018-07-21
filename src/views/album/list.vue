@@ -7,7 +7,7 @@
       <div class="album__list-card" v-for="(item, index) in list" :key="index">
         <Card>
           <a href="javascript:;" slot="extra">
-            <Icon type="android-delete" size="24" color="#999"></Icon>
+            <Icon type="android-delete" size="24" color="#999" @click="deleteConfirm(item.id, index)"></Icon>
           </a>
           <p slot="title">{{item.title}}</p>
           <div class="album__list-img bg-cover" :style="{backgroundImage: `url(${item.img})`}"></div>
@@ -61,20 +61,20 @@ export default {
     this.getList();
   },
   methods: {
-    getList() {
+    getList() { // 获取相册列表
       this.$http.get(this.API.album_list)
         .then(res => {
           this.list = res.data.data;
         });
     },
-    ok() {
+    ok() { // 确认添加
       this.$refs.formCustom.validate(valid => {
         if (valid) {
           this.add();
         }
       });
     },
-    add() {
+    add() { // 添加相册
       this.$http.post(this.API.album_list, {
         title: this.formCustom.title,
         url: this.formCustom.url,
@@ -83,6 +83,23 @@ export default {
         this.$Message.success('添加成功');
         this.getList();
       });
+    },
+    deleteConfirm(id, index) { // 删除相册
+      this.$Modal.confirm({
+        title: '提示',
+        content: '确认删除该相册？',
+        onOk: () => {
+          this.deleteAlbum(id, index);
+        },
+      });
+    },
+    deleteAlbum(id, index) { // 确认删除
+      this.$http.post(this.API.album_delete, {
+        id,
+        token: Cookie.get('token'),
+      }).then(() => {
+        this.list.splice(index, 1);
+      })
     },
   },
 };
