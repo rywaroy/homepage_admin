@@ -429,6 +429,22 @@ export const appRouter = [{
 				import ('@/views/album/list.vue')
 			},
 		]
+	},
+	{
+		path: '/plan',
+		icon: 'university',
+		title: '打卡',
+		name: 'plan',
+		component: Main,
+		children: [
+			{
+				path: '/',
+				title: '打卡',
+				name: 'plan_record',
+				component: () =>
+				import ('@/views/plan/plan.vue')
+			},
+		]
 	}
 ];
 
