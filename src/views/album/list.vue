@@ -99,7 +99,7 @@ export default {
         token: Cookie.get('token'),
       }).then(() => {
         this.list.splice(index, 1);
-      })
+      });
     },
   },
 };
