@@ -10,7 +10,7 @@
             <Icon type="android-delete" size="24" color="#999" @click="deleteConfirm(item.id, index)"></Icon>
           </a>
           <p slot="title">{{item.title}}</p>
-          <div class="album__list-img bg-cover" :style="{backgroundImage: `url(${item.img})`}"></div>
+          <div class="album__list-img bg-cover" :style="{backgroundImage: `url(${item.img})`}" @click="linkGroup(item.id)"></div>
         </Card>
       </div>
     </div>
@@ -27,6 +27,7 @@
           <Input type="text" v-model="formCustom.url" />
         </FormItem>
       </Form>
+      <p>推荐使用<a href="https://github.com/Molunerfinn/PicGo" target="_blank">PicGo</a>图床工具</p>
     </Modal>
   </div>
 </template>
@@ -101,10 +102,13 @@ export default {
         this.list.splice(index, 1);
       });
     },
+    linkGroup(id) { // 跳转相册集
+      this.$router.push({ path: `/album/group/${id}` });
+    },
   },
 };
 </script>
 
 <style>
-@import url('./list.less');
+@import './list.less';
 </style>
