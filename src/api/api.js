@@ -14,4 +14,8 @@ export default {
   learn_update: '/learn/update',
   album_list: '/album/album',
   album_delete: '/album/album/delete',
+  album_group: '/album/group',
+  album_group_delete: '/album/group/delete',
+  think_list: '/think/list',
+  think_delete: '/think/delete',
 };

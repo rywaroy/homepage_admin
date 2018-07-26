@@ -148,7 +148,6 @@ export default {
             num++;
           }
         }
-        console.log(num);
         return parseInt((num / this.list.length) * 100, 10);
       }
     },
