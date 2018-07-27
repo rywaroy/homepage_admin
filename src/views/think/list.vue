@@ -35,7 +35,7 @@ export default {
                   this.linkInfo(params.row.id);
                 },
               },
-            }, params.row.content)
+            }, params.row.content ? params.row.content : '【表情】')
           ),
         },
         {
@@ -90,13 +90,19 @@ export default {
         this.total = res.data.data.total;
       });
     },
-    delete(id) { // 删除文章
+    delete(id) { // 删除说说
       this.$http.post(this.API.think_delete, {
         id,
         token: Cookie.get('token'),
       }).then(() => {
         this.getList();
       });
+    },
+    add() { // 增加说说，跳转详情页
+      this.$router.push({ name: 'think_add' });
+    },
+    linkInfo(id) { // 跳转说说详情
+      this.$router.push({ path: `/think/info/${id}` });
     },
   },
   watch: {
