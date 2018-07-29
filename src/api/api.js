@@ -18,4 +18,7 @@ export default {
   album_group_delete: '/album/group/delete',
   think_list: '/think/list',
   think_delete: '/think/delete',
+  think_info: '/think/info',
+  think_add: '/think/info',
+  think_edit: '/think/edit',
 };

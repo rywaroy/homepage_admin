@@ -1,18 +1,4 @@
 import Main from '@/views/Main.vue';
-// import Login from '@/views/login.vue';
-// import Error404 from '@/views/error-page/404.vue';
-// import Error403 from '@/views/error-page/403.vue';
-// import Error500 from '@/views/error-page/500.vue';
-// import Preview from '@/views/form/article-publish/preview.vue';
-// import Locking from '@/views/main-components/lockscreen/components/locking-page.vue';
-// import Home from '@/views/home/home.vue';
-// import ArticleInfo from '@/views/article/info.vue';
-// import LearnInfo from '@/views/learn/info.vue';
-// import Group from '@/views/album/group.vue';
-// import Article from '@/views/article/list.vue';
-// import Learn from '@/views/learn/list.vue';
-// import Album from '@/views/album/list.vue';
-// import Plan from '@/views/plan/plan.vue';
 
 // 不作为Main组件的子页面展示的页面单独写，如下
 export const loginRouter = {
@@ -23,7 +9,6 @@ export const loginRouter = {
 	},
 	component: () =>
 		import ('@/views/login.vue')
-	// component: Login,
 };
 
 export const page404 = {
@@ -34,7 +19,6 @@ export const page404 = {
 	},
 	component: () =>
 		import ('@/views/error-page/404.vue')
-	// component: Error404,
 };
 
 export const page403 = {
@@ -45,7 +29,6 @@ export const page403 = {
 	name: 'error-403',
 	component: () =>
 		import ('@//views/error-page/403.vue')
-	// component: Error403,
 };
 
 export const page500 = {
@@ -56,7 +39,6 @@ export const page500 = {
 	name: 'error-500',
 	component: () =>
 		import ('@/views/error-page/500.vue')
-	// component: Error500,
 };
 
 export const preview = {
@@ -64,7 +46,6 @@ export const preview = {
 	name: 'preview',
 	component: () =>
 		import ('@/views/form/article-publish/preview.vue')
-	// component: Preview,
 };
 
 export const locking = {
@@ -72,7 +53,6 @@ export const locking = {
 	name: 'locking',
 	component: () =>
 		import ('@/views/main-components/lockscreen/components/locking-page.vue')
-	// component: Locking,
 };
 
 // 作为Main组件的子页面展示但是不在左侧菜单显示的路由写在otherRouter里
@@ -125,7 +105,6 @@ export const otherRouter = {
 			name: 'article_add',
 			component: () =>
 				import ('@/views/article/info.vue')
-			// component: ArticleInfo,
 		},
 		{
 			path: 'article/info/:id',
@@ -133,7 +112,6 @@ export const otherRouter = {
 			name: 'article_info',
 			component: () =>
 				import ('@/views/article/info.vue')
-			// component: ArticleInfo,
 		},
 		{
 			path: 'learn/info',
@@ -141,7 +119,6 @@ export const otherRouter = {
 			name: 'learn_add',
 			component: () =>
 				import ('@/views/learn/info.vue')
-			// component: LearnInfo,
 		},
 		{
 			path: 'learn/info/:id',
@@ -149,7 +126,6 @@ export const otherRouter = {
 			name: 'learn_info',
 			component: () =>
 				import ('@/views/learn/info.vue')
-			// component: LearnInfo,
 		},
 		{
 			path: 'album/group/:id',
@@ -157,7 +133,20 @@ export const otherRouter = {
 			name: 'album_group',
 			component: () =>
 				import ('@/views/album/group.vue')
-			// component: Group,
+		},
+		{
+			path: 'think/info',
+			title: '新增说说',
+			name: 'think_add',
+			component: () =>
+				import ('@/views/think/info.vue')
+		},
+		{
+			path: 'think/info/:id',
+			title: '文章详情',
+			name: 'think_info',
+			component: () =>
+				import ('@/views/think/info.vue')
 		},
 	]
 };
@@ -435,7 +424,7 @@ export const appRouter = [
 	},
 	{
 		path: '/learn',
-		icon: 'university',
+		icon: 'cube',
 		title: '学习笔记',
 		name: 'learn',
 		component: Main,
@@ -452,7 +441,7 @@ export const appRouter = [
 	},
 	{
 		path: '/album',
-		icon: 'university',
+		icon: 'images',
 		title: '相册',
 		name: 'album',
 		component: Main,
@@ -469,7 +458,7 @@ export const appRouter = [
 	},
 	{
 		path: '/plan',
-		icon: 'university',
+		icon: 'pie-graph',
 		title: '打卡',
 		name: 'plan',
 		component: Main,
@@ -486,7 +475,7 @@ export const appRouter = [
 	},
 	{
 		path: '/think',
-		icon: 'university',
+		icon: 'chatbubble-working',
 		title: '说说',
 		name: 'think',
 		component: Main,
