@@ -114,6 +114,13 @@ export const otherRouter = {
 				import ('@/views/article/info.vue')
 		},
 		{
+			path: 'article/tag',
+			title: '文章标签',
+			name: 'article_tag',
+			component: () =>
+				import ('@/views/article/tag.vue')
+		},
+		{
 			path: 'learn/info',
 			title: '新增笔记',
 			name: 'learn_add',
@@ -143,7 +150,7 @@ export const otherRouter = {
 		},
 		{
 			path: 'think/info/:id',
-			title: '文章详情',
+			title: '说说详情',
 			name: 'think_info',
 			component: () =>
 				import ('@/views/think/info.vue')

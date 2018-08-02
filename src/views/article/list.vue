@@ -2,6 +2,7 @@
   <div class="article__list">
     <div class="article__list-add">
       <Button type="primary" @click="add()">+ 文章</Button>
+      <Button type="primary" @click="goTag()">文章标签</Button>
     </div>
     <Table border :columns="columns" :data="list"></Table>
     <div class="article__list-page">
@@ -131,6 +132,9 @@ export default {
     },
     linkInfo(id) { // 跳转文章详情
       this.$router.push({ path: `/article/info/${id}` });
+    },
+    goTag() {
+      this.$router.push({ name: 'article_tag'});
     },
   },
   watch: {

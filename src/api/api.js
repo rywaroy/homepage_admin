@@ -7,6 +7,7 @@ export default {
   article_add: '/article/add',
   article_info: '/article/info',
   article_update: '/article/update',
+  article_tag: '/article/tag',
   learn_list: '/learn/list',
   learn_delete: '/learn/delete',
   learn_add: '/learn/add',
