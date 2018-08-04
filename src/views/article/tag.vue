@@ -10,6 +10,8 @@ export default {
   data() {
     return {
       list: [],
+      title: '',
+      color: '',
     };
   },
   mounted() {
@@ -22,8 +24,61 @@ export default {
           this.list = res.data.data;
         });
     },
-    add() {
-
+    add() { // 添加标签
+      this.$Modal.confirm({
+        render: (h) => (
+          h('div', [
+            h('Input', {
+              props: {
+                value: this.title,
+                autofocus: true,
+                placeholder: '标签名字',
+              },
+              style: {
+                marginBottom: '5px',
+              },
+              on: {
+                input: (val) => {
+                  this.title = val;
+                },
+              },
+            }),
+            h('Input', {
+              props: {
+                value: this.color,
+                placeholder: '标签颜色',
+              },
+              on: {
+                input: (val) => {
+                  this.color = val;
+                },
+              },
+            }),
+          ])
+        ),
+        onOk: () => {
+          this.addTag();
+        },
+      });
+    },
+    addTag() { // 添加
+      if (!this.title) {
+        this.$Message.error('请输入文章标签名');
+        return;
+      }
+      if (!this.color) {
+        this.$Message.error('请输入文章标签颜色');
+        return;
+      }
+      this.$http.post(this.API.article_tag, {
+        title: this.title,
+        color: this.color,
+      }).then(() => {
+        this.$Message.success('添加成功');
+        this.title = '';
+        this.color = '';
+        this.getList();
+      });
     },
   },
 };
