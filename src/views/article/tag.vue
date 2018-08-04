@@ -1,11 +1,13 @@
 <template>
   <div class="article__tag">
-    <div class="article__tag-item" v-for="(item, index) in list" :key="index" :style="{background: item.color}">{{item.title}}</div>
+    <div class="article__tag-item" v-for="(item, index) in list" :key="index" :style="{background: item.color}" @click="deleteConfirm(item.id)">{{item.title}}</div>
     <Button type="primary" size="large" @click="add()">+ 增加</Button>
   </div>
 </template>
 
 <script>
+import Cookie from 'js-cookie';
+
 export default {
   data() {
     return {
@@ -77,6 +79,24 @@ export default {
         this.$Message.success('添加成功');
         this.title = '';
         this.color = '';
+        this.getList();
+      });
+    },
+    deleteConfirm(index) { // 确认删除
+      this.$Modal.confirm({
+        title: '删除',
+        content: '确认删除该标签',
+        onOk: () => {
+          this.deleteTag(index);
+        },
+      });
+    },
+    deleteTag(id) { // 删除标签
+      this.$http.post(this.API.article_tag_delete, {
+        id,
+        token: Cookie.get('token'),
+      }).then(() => {
+        this.$Message.success('删除成功');
         this.getList();
       });
     },

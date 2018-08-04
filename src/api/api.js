@@ -4,6 +4,7 @@ export default {
   article_top: '/article/top',
   article_delete: '/article/delete',
   article_tag: '/article/tag',
+  article_tag_delete: '/article/tag/delete',
   article_add: '/article/add',
   article_info: '/article/info',
   article_update: '/article/update',
