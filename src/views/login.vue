@@ -70,6 +70,8 @@
 							Cookies.set('password', this.form.password);
 							Cookies.set('token', res.data.data.token);
 							Cookies.set('access', 0);
+							Cookies.set('last_time', res.data.data.last_time);
+							Cookies.set('last_location', res.data.data.last_location);
 							localStorage.setItem('avatorImgPath', res.data.data.avatar);
 							this.$router.push({
 								name: 'home_index',
