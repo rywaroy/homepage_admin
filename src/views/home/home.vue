@@ -29,13 +29,13 @@
 						<Col span="8">
 						<p class="notwrap">上次登录时间:</p>
 						</Col>
-						<Col span="16" class="padding-left-8">2017.09.12-13:32:20</Col>
+						<Col span="16" class="padding-left-8">{{last_time | time}}</Col>
 					</Row>
 					<Row class="margin-top-8">
 						<Col span="8">
 						<p class="notwrap">上次登录地点:</p>
 						</Col>
-						<Col span="16" class="padding-left-8">北京</Col>
+						<Col span="16" class="padding-left-8">{{last_location}}</Col>
 					</Row>
 				</Card>
 				</Col>
@@ -96,6 +96,8 @@
 	import inforCard from './components/inforCard.vue';
 	import mapDataTable from './components/mapDataTable.vue';
 	import toDoListItem from './components/toDoListItem.vue';
+	import Cookie from 'js-cookie';
+	import time from 'js-time.js';
 
 	export default {
 		name: 'home',
@@ -112,32 +114,22 @@
 		},
 		data() {
 			return {
-				toDoList: [{
-						title: '去iView官网学习完整的iView组件'
-					},
-					{
-						title: '去iView官网学习完整的iView组件'
-					},
-					{
-						title: '去iView官网学习完整的iView组件'
-					},
-					{
-						title: '去iView官网学习完整的iView组件'
-					},
-					{
-						title: '去iView官网学习完整的iView组件'
-					}
-				],
 				count: {
 					createUser: 496,
 					visit: 3264,
 					collection: 24389305,
 					transfer: 39503498
 				},
-				cityData: cityData,
+				cityData,
 				showAddNewTodo: false,
-				newToDoItemValue: ''
+				newToDoItemValue: '',
+				last_time: null,
+				last_location: null,
 			};
+		},
+		created() {
+			this.last_time = Cookie.get('last_time');
+			this.last_location = Cookie.get('last_location');
 		},
 		computed: {
 			avatorPath() {
@@ -164,7 +156,12 @@
 			cancelAdd() {
 				this.showAddNewTodo = false;
 				this.newToDoItemValue = '';
-			}
-		}
+			},
+		},
+		filters: {
+			time(value) {
+				return time(value).format('YYYY-MM-DD HH:mm:ss');
+			},
+		},
 	};
 </script>
