@@ -34,5 +34,6 @@ module.exports = {
         'no-tabs': 0,
         'indent': 0,
         'import/named': 0,
+        'prefer-destructuring': 0,
     }
 };

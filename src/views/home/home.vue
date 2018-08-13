@@ -60,7 +60,7 @@
 					数据来源统计
 				</p>
 				<div class="data-source-row">
-					<data-source-pie></data-source-pie>
+					<data-source-pie :data="data" v-if="load"></data-source-pie>
 				</div>
 			</Card>
 			</Col>
@@ -82,17 +82,12 @@
 		},
 		data() {
 			return {
-				count: {
-					createUser: 496,
-					visit: 3264,
-					collection: 24389305,
-					transfer: 39503498
-				},
 				last_time: null,
 				last_location: null,
 				totalVisit: 0,
 				todayVisit: 0,
 				load: false,
+				data: {},
 			};
 		},
 		created() {
@@ -115,8 +110,56 @@
 			getInfo() { // 获取博客访问信息
 				this.$http(this.API.base_visit)
 					.then(res => {
-						this.totalVisit = res.data.data.total;
-						this.todayVisit = res.data.data.date;
+						const data = res.data.data;
+						this.totalVisit = data.total;
+						this.todayVisit = data.date;
+						this.data = [
+							{
+								value: data.iphone,
+								name: 'iphone',
+								itemStyle: {
+									normal: {
+										color: '#9bd598',
+									},
+								},
+							},
+							{
+								value: data.android,
+								name: 'android',
+								itemStyle: {
+									normal: {
+										color: '#ffd58f',
+									},
+								},
+							},
+							{
+								value: data.pc,
+								name: 'pc',
+								itemStyle: {
+									normal: {
+										color: '#abd5f2',
+									},
+								},
+							},
+							{
+								value: data.ipad,
+								name: 'ipad',
+								itemStyle: {
+									normal: {
+										color: '#ab8df2',
+									},
+								},
+							},
+							// {
+							// 	value: 302340,
+							// 	name: 'others',
+							// 	itemStyle: {
+							// 		normal: {
+							// 			color: '#e14f60',
+							// 		},
+							// 	},
+							// },
+						];
 						this.load = true;
 					});
 			},
