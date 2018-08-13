@@ -22,4 +22,5 @@ export default {
   think_info: '/think/info',
   think_add: '/think/info',
   think_edit: '/think/edit',
+  base_visit: '/base/visit',
 };
