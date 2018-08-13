@@ -18,7 +18,7 @@
 						<Col span="16" style="padding-left:6px;">
 							<Row class-name="made-child-con-middle" type="flex" align="middle">
 								<div>
-									<b class="card-user-infor-name">Admin</b>
+									<b class="card-user-infor-name">{{user}}</b>
 									<p>super admin</p>
 								</div>
 							</Row>
@@ -87,12 +87,14 @@
 				totalVisit: 0,
 				todayVisit: 0,
 				load: false,
+				user: '',
 				data: {},
 			};
 		},
 		created() {
 			this.last_time = Cookie.get('last_time');
 			this.last_location = Cookie.get('last_location');
+			this.user = Cookie.get('user');
 		},
 		mounted() {
 			this.getInfo();
