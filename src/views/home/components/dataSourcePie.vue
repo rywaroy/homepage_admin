@@ -9,7 +9,7 @@ export default {
 	name: 'dataSourcePie',
 	props: {
 		data: {
-			type: Object,
+			type: Array,
 		},
 	},
 	mounted() {
