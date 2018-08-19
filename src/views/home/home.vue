@@ -110,8 +110,11 @@
 				this.newToDoItemValue = '';
 			},
 			getInfo() { // 获取博客访问信息
-				this.$http(this.API.base_visit)
-					.then(res => {
+				this.$http.get(this.API.base_visit, {
+					params: {
+						token: Cookie.get('token'),
+					},
+				}).then(res => {
 						const data = res.data.data;
 						this.totalVisit = data.total;
 						this.todayVisit = data.date;
