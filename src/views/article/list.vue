@@ -13,7 +13,6 @@
 
 <script>
 import dayjs from 'dayjs';
-import Cookie from 'js-cookie';
 
 export default {
   data() {
@@ -114,7 +113,6 @@ export default {
       this.$http.post(this.API.article_top, {
         id,
         top: newTop,
-        token: Cookie.get('token'),
       }).then(() => {
         this.list[index].top = newTop;
       });
@@ -122,7 +120,6 @@ export default {
     delete(id) { // 删除文章
       this.$http.post(this.API.article_delete, {
         id,
-        token: Cookie.get('token'),
       }).then(() => {
         this.getList();
       });

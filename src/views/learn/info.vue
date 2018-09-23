@@ -22,7 +22,6 @@
 </template>
 
 <script>
-import Cookie from 'js-cookie';
 import SimpleMDE from 'simplemde';
 
 export default {
@@ -113,7 +112,6 @@ export default {
         html: this.simplemde.markdown(this.simplemde.value()),
         intro: this.intro,
         tag: this.tag,
-        token: Cookie.get('token'),
       }).then(() => {
         this.$Message.success('更新成功');
         this.$router.push({ name: 'learn_list' });

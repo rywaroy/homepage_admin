@@ -12,7 +12,6 @@
 
 <script>
 import dayjs from 'dayjs';
-import Cookie from 'js-cookie';
 
 export default {
   data() {
@@ -95,7 +94,6 @@ export default {
     delete(id) { // 删除文章
       this.$http.post(this.API.learn_delete, {
         id,
-        token: Cookie.get('token'),
       }).then(() => {
         this.getList();
       });

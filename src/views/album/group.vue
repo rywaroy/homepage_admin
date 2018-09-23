@@ -29,7 +29,6 @@
 </template>
 
 <script>
-import Cookie from 'js-cookie';
 
 export default {
   data() {
@@ -88,7 +87,6 @@ export default {
     deleteGroup(id, index) {
       this.$http.post(this.API.album_group_delete, {
         id,
-        token: Cookie.get('token'),
       }).then(() => {
         this.$Message.success('删除成功');
         this.list.splice(index, 1);

@@ -29,7 +29,6 @@
 
 <script>
 import dayjs from 'dayjs';
-import Cookie from 'js-cookie';
 
 export default {
   data() {
@@ -79,7 +78,6 @@ export default {
       this.$http.post('/plan/clock', {
         time: dayjs(this.time).format('YYYY-MM-DD'),
         id,
-        token: Cookie.get('token'),
       }).then(() => {
         this.$Message.success('打卡成功！');
         this.list[index].isClock = true;
@@ -112,7 +110,6 @@ export default {
     add() { // 增加计划
       this.$http.post('/plan/list', {
         title: this.title,
-        token: Cookie.get('token'),
       }).then(() => {
         this.title = '';
         this.getPlanList();
@@ -131,7 +128,6 @@ export default {
     deletePlan(id, index) { // 删除计划
       this.$http.post('/plan/list/delete', {
         id,
-        token: Cookie.get('token'),
       }).then(() => {
         this.list.splice(index, 1);
       });

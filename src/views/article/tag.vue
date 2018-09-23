@@ -6,7 +6,6 @@
 </template>
 
 <script>
-import Cookie from 'js-cookie';
 
 export default {
   data() {
@@ -94,7 +93,6 @@ export default {
     deleteTag(id) { // 删除标签
       this.$http.post(this.API.article_tag_delete, {
         id,
-        token: Cookie.get('token'),
       }).then(() => {
         this.$Message.success('删除成功');
         this.getList();

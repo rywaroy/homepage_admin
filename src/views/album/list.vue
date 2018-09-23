@@ -33,7 +33,6 @@
 </template>
 
 <script>
-import Cookie from 'js-cookie';
 
 export default {
   data() {
@@ -79,7 +78,6 @@ export default {
       this.$http.post(this.API.album_list, {
         title: this.formCustom.title,
         url: this.formCustom.url,
-        token: Cookie.get('token'),
       }).then(() => {
         this.$Message.success('添加成功');
         this.getList();
@@ -97,7 +95,6 @@ export default {
     deleteAlbum(id, index) { // 确认删除
       this.$http.post(this.API.album_delete, {
         id,
-        token: Cookie.get('token'),
       }).then(() => {
         this.list.splice(index, 1);
       });

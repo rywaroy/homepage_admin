@@ -29,7 +29,6 @@
 
 <script>
 import tinymce from 'tinymce';
-import Cookie from 'js-cookie';
 
 export default {
   data() {
@@ -127,7 +126,6 @@ export default {
         content: this.content,
         intro: this.intro,
         tagId: this.tagId,
-        token: Cookie.get('token'),
       }).then(() => {
         this.$Message.success('发表成功');
         this.$router.push({ name: 'article_list' });

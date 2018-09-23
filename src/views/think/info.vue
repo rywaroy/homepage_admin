@@ -27,7 +27,6 @@
 </template>
 
 <script>
-import Cookie from 'js-cookie';
 
 export default {
   data() {
@@ -81,7 +80,6 @@ export default {
         content: this.content,
         photos: this.photos.join(','),
         id: this.$route.params.id,
-        token: Cookie.get('token'),
       }).then(() => {
         this.$router.push({ name: 'think_list' });
       });
