@@ -1,6 +1,7 @@
 import axios from 'axios';
 import qs from 'qs';
 import { Message } from 'iview';
+import Cookie from 'js-cookie';
 
 const Axios = axios.create({
 	baseURL: 'http://localhost:3001/api/',
@@ -23,6 +24,9 @@ Axios.interceptors.request.use(
 			// 序列化
 			config.data = qs.stringify(config.data);
 		}
+		if (Cookie.get('token')) {
+      config.headers.Authorization = Cookie.get('token');
+    }
 		return config;
 	},
 	error => {
@@ -34,7 +38,7 @@ Axios.interceptors.request.use(
 // 返回状态判断(添加响应拦截器)
 Axios.interceptors.response.use(
 	res => {
-		if (res.data.status !== '0000') {
+		if (res.data.status !== 200) {
 			Message.error(res.data.msg);
 			return Promise.reject(res.data.Msg);
 		}
