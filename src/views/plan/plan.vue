@@ -7,7 +7,7 @@
       </div>
       <div class="plan__record">
         <div :class="['plan__item f-cb', {'disable': item.isClock}]" v-for="(item, index) in list" :key="index" @click.self="clock(item.id, index)">
-          <div class="plan__item-title fl">{{item.plan.title}}</div>
+          <div class="plan__item-title fl">{{item.title}}</div>
           <div class="plan__item-delete" @click="deleteConfirm(item.id, index)" v-show="isEdit">
             <Icon type="close-round" size="18" color="#fff"></Icon>
           </div>
