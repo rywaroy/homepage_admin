@@ -154,7 +154,6 @@ export default {
         content: this.content,
         intro: this.intro,
         tagId: this.tagId,
-        token: Cookie.get('token'),
       }).then(() => {
         this.$Message.success('更新成功');
         this.$router.push({ name: 'article_list' });

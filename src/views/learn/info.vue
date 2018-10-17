@@ -82,7 +82,6 @@ export default {
         html: this.simplemde.markdown(this.simplemde.value()),
         intro: this.intro,
         tag: this.tag,
-        token: Cookie.get('token'),
       }).then(() => {
         this.$Message.success('发表成功');
         this.$router.push({ name: 'learn_list' });

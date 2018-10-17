@@ -68,7 +68,6 @@ export default {
       this.$http.post(this.API.album_group, {
         url: this.formCustom.url,
         id: this.$route.params.id,
-        token: Cookie.get('token'),
       }).then(() => {
         this.$Message.success('添加成功');
         this.formCustom.url = '';

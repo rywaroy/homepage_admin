@@ -93,7 +93,6 @@ export default {
     delete(id) { // 删除说说
       this.$http.post(this.API.think_delete, {
         id,
-        token: Cookie.get('token'),
       }).then(() => {
         this.getList();
       });
