@@ -91,12 +91,11 @@ export default {
       });
     },
     deleteTag(id) { // 删除标签
-      this.$http.post(this.API.article_tag_delete, {
-        id,
-      }).then(() => {
-        this.$Message.success('删除成功');
-        this.getList();
-      });
+      this.$http.delete(this.API.article_tag_delete + id)
+        .then(() => {
+          this.$Message.success('删除成功');
+          this.getList();
+        });
     },
   },
 };
