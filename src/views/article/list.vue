@@ -118,11 +118,10 @@ export default {
       });
     },
     delete(id) { // 删除文章
-      this.$http.post(this.API.article_delete, {
-        id,
-      }).then(() => {
-        this.getList();
-      });
+      this.$http.delete(this.API.article_delete + id)
+        .then(() => {
+          this.getList();
+        });
     },
     add() { // 增加文章，跳转详情页
       this.$router.push({ name: 'article_add' });
@@ -131,7 +130,7 @@ export default {
       this.$router.push({ path: `/article/info/${id}` });
     },
     goTag() {
-      this.$router.push({ name: 'article_tag'});
+      this.$router.push({ name: 'article_tag' });
     },
   },
   watch: {
