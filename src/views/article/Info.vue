@@ -132,24 +132,20 @@ export default {
       });
     },
     getInfo() { // 获取文章详情
-      this.$http.get(this.API.article_info, {
-        params: {
-          id: this.$route.params.id,
-        },
-      }).then(res => {
-        this.intro = res.data.data.intro;
-        this.title = res.data.data.title;
-        this.content = res.data.data.content;
-        this.tagId = res.data.data.tagid;
-        this.init();
-      });
+      this.$http.get(this.API.article_info + this.$route.params.id)
+        .then(res => {
+          this.intro = res.data.data.intro;
+          this.title = res.data.data.title;
+          this.content = res.data.data.content;
+          this.tagId = res.data.data.tagid;
+          this.init();
+        });
     },
     update() { // 更新文章
       if (!this.validate()) {
         return;
       }
-      this.$http.post(this.API.article_update, {
-        id: this.$route.params.id,
+      this.$http.patch(this.API.article_update + this.$route.params.id, {
         title: this.title,
         content: this.content,
         intro: this.intro,
