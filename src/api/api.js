@@ -13,10 +13,12 @@ export default {
   learn_add: '/learn/add',
   learn_info: '/learn/info',
   learn_update: '/learn/update',
-  album_list: '/album/album',
-  album_delete: '/album/album/delete',
-  album_group: '/album/group',
-  album_group_delete: '/album/group/delete',
+  album_list: '/album',
+  album_delete: '/album/',
+  album_group(id) {
+    return `/album/${id}/group`;
+  },
+  album_group_delete: '/album/group/',
   think_list: '/think/list',
   think_delete: '/think/delete',
   think_info: '/think/info',
