@@ -93,11 +93,10 @@ export default {
       });
     },
     deleteAlbum(id, index) { // 确认删除
-      this.$http.post(this.API.album_delete, {
-        id,
-      }).then(() => {
-        this.list.splice(index, 1);
-      });
+      this.$http.delete(this.API.album_delete + id)
+        .then(() => {
+          this.list.splice(index, 1);
+        });
     },
     linkGroup(id) { // 跳转相册集
       this.$router.push({ path: `/album/group/${id}` });
