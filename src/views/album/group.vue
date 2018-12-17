@@ -52,7 +52,7 @@ export default {
   },
   methods: {
     getList() { // 获取相册列表
-      this.$http.get(this.API.album_group, { params: { id: this.$route.params.id } })
+      this.$http.get(this.API.album_group(this.$route.params.id))
         .then(res => {
           this.list = res.data.data;
         });
@@ -65,9 +65,8 @@ export default {
       });
     },
     add() {
-      this.$http.post(this.API.album_group, {
+      this.$http.post(this.API.album_group(this.$route.params.id), {
         url: this.formCustom.url,
-        id: this.$route.params.id,
       }).then(() => {
         this.$Message.success('添加成功');
         this.formCustom.url = '';
@@ -84,12 +83,11 @@ export default {
       });
     },
     deleteGroup(id, index) {
-      this.$http.post(this.API.album_group_delete, {
-        id,
-      }).then(() => {
-        this.$Message.success('删除成功');
-        this.list.splice(index, 1);
-      });
+      this.$http.delete(this.API.album_group_delete + id)
+        .then(() => {
+          this.$Message.success('删除成功');
+          this.list.splice(index, 1);
+        });
     },
   },
 };
