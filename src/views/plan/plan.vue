@@ -44,7 +44,7 @@ export default {
   },
   methods: {
     getPlanList() { // 获取计划列表
-      this.$http.get('/plan/list')
+      this.$http.get('/plan')
         .then(res => {
           const data = res.data.data.list;
           for (let i = 0; i < data.length; i++) {
@@ -108,7 +108,7 @@ export default {
       });
     },
     add() { // 增加计划
-      this.$http.post('/plan/list', {
+      this.$http.post('/plan', {
         title: this.title,
       }).then(() => {
         this.title = '';
@@ -126,11 +126,10 @@ export default {
       });
     },
     deletePlan(id, index) { // 删除计划
-      this.$http.post('/plan/list/delete', {
-        id,
-      }).then(() => {
-        this.list.splice(index, 1);
-      });
+      this.$http.delete(`/plan/${id}`)
+        .then(() => {
+          this.list.splice(index, 1);
+        });
     },
   },
   computed: {
