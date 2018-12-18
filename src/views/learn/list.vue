@@ -92,11 +92,10 @@ export default {
       });
     },
     delete(id) { // 删除文章
-      this.$http.post(this.API.learn_delete, {
-        id,
-      }).then(() => {
-        this.getList();
-      });
+      this.$http.delete(this.API.learn_delete + id)
+        .then(() => {
+          this.getList();
+        });
     },
     add() { // 增加文章，跳转详情页
       this.$router.push({ name: 'learn_add' });
