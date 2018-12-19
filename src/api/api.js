@@ -19,10 +19,10 @@ export default {
     return `/album/${id}/group`;
   },
   album_group_delete: '/album/group/',
-  think_list: '/think/list',
-  think_delete: '/think/delete',
-  think_info: '/think/info',
-  think_add: '/think/info',
-  think_edit: '/think/edit',
+  think_list: '/think',
+  think_delete: '/think/',
+  think_info: '/think/',
+  think_add: '/think',
+  think_edit: '/think/',
   base_visit: '/base/visit',
 };
