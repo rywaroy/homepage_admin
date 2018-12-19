@@ -91,11 +91,10 @@ export default {
       });
     },
     delete(id) { // 删除说说
-      this.$http.post(this.API.think_delete, {
-        id,
-      }).then(() => {
-        this.getList();
-      });
+      this.$http.delete(this.API.think_delete + id)
+        .then(() => {
+          this.getList();
+        });
     },
     add() { // 增加说说，跳转详情页
       this.$router.push({ name: 'think_add' });
