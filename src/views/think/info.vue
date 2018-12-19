@@ -52,14 +52,11 @@ export default {
   },
   methods: {
     getInfo() {
-      this.$http.get(this.API.think_info, {
-        params: {
-          id: this.$route.params.id,
-        },
-      }).then(res => {
-        this.content = res.data.data.content;
-        this.photos = res.data.data.photos;
-      });
+      this.$http.get(this.API.think_info + this.$route.params.id)
+        .then(res => {
+          this.content = res.data.data.content;
+          this.photos = res.data.data.photos;
+        });
     },
     deleteImage(index) {
       this.photos.splice(index, 1);
@@ -76,13 +73,21 @@ export default {
         this.$Message.error('请输入内容或者上传图片');
         return;
       }
-      this.$http.post(this.$route.params.id ? this.API.think_edit : this.API.think_add, {
-        content: this.content,
-        photos: this.photos.join(','),
-        id: this.$route.params.id,
-      }).then(() => {
-        this.$router.push({ name: 'think_list' });
-      });
+      if (this.$route.params.id) {
+        this.$http.patch(this.API.think_edit + this.$route.params.id, {
+          content: this.content,
+          photos: this.photos.join(','),
+        }).then(() => {
+          this.$router.push({ name: 'think_list' });
+        });
+      } else {
+        this.$http.post(this.API.think_add, {
+          content: this.content,
+          photos: this.photos.join(','),
+        }).then(() => {
+          this.$router.push({ name: 'think_list' });
+        });
+      }
     },
   },
 };
