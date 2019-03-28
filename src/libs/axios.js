@@ -4,8 +4,9 @@ import { Message } from 'iview';
 import Cookie from 'js-cookie';
 
 const Axios = axios.create({
-	baseURL: 'http://localhost:3001/api/',
+	// baseURL: 'http://localhost:3001/api/',
 	// baseURL: 'http://www.3zsd.com/api/',
+	baseURL: 'https://www.3zsd.com/api/',
 	timeout: 10000,
 	responseType: 'json',
 	// withCredentials: true, // 是否允许带cookie这些
@@ -19,7 +20,7 @@ Axios.interceptors.request.use(
 	config => {
 		// 在发送请求之前做某件事
 		if (
-			config.method === 'post'
+			config.method === 'post' || config.method === 'patch'
 		) {
 			// 序列化
 			config.data = qs.stringify(config.data);
