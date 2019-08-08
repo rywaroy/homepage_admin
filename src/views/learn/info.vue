@@ -7,7 +7,7 @@
       <Input v-model="intro" placeholder="简介" style="width: 600px" />
     </div>
     <div class="article__info-line">
-      <Input v-model="tag" placeholder="标签" style="width: 200px" />
+      <Input v-model="sign" placeholder="类型" style="width: 200px" />
     </div>
     <div class="article__info-line">
       <Card>
@@ -31,7 +31,7 @@ export default {
       intro: '',
       html: '',
       md: '',
-      tag: '',
+      sign: '',
       isEdit: this.$route.params.id ? true : false, // 是否为编辑状态
       simplemde: null,
     };
@@ -62,7 +62,7 @@ export default {
         this.$Message.error('请输入文章简介');
         return false;
       }
-      if (!this.tag) {
+      if (!this.sign) {
         this.$Message.error('请选择文章标签');
         return false;
       }
@@ -81,7 +81,7 @@ export default {
         md: this.simplemde.value(),
         html: this.simplemde.markdown(this.simplemde.value()),
         intro: this.intro,
-        tag: this.tag,
+        sign: this.sign,
       }).then(() => {
         this.$Message.success('发表成功');
         this.$router.push({ name: 'learn_list' });
@@ -93,7 +93,7 @@ export default {
           this.intro = res.data.data.intro;
           this.title = res.data.data.title;
           this.md = res.data.data.md;
-          this.tag = res.data.data.tag;
+          this.sign = res.data.data.sign;
           this.init();
         });
     },
@@ -106,7 +106,7 @@ export default {
         md: this.simplemde.value(),
         html: this.simplemde.markdown(this.simplemde.value()),
         intro: this.intro,
-        tag: this.tag,
+        sign: this.sign,
       }).then(() => {
         this.$Message.success('更新成功');
         this.$router.push({ name: 'learn_list' });
