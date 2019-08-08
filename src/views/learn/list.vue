@@ -46,9 +46,17 @@ export default {
           ),
         },
         {
-          title: '标签',
-          key: 'tag',
+          title: '类型',
+          key: 'sign',
           width: 100,
+        },
+        {
+          title: '标签',
+          key: 'tag.title',
+          width: 100,
+          render: (h, params) => (
+            h('div', params.row.tag.title)
+          ),
         },
         {
           title: 'Action',
