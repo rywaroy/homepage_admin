@@ -10,6 +10,11 @@
       <Input v-model="sign" placeholder="类型" style="width: 200px" />
     </div>
     <div class="article__info-line">
+      <Select v-model="tagId" style="width:200px">
+        <Option v-for="(item, index) in tagList" :value="item.id" :key="index">{{ item.title }}</Option>
+      </Select>
+    </div>
+    <div class="article__info-line">
       <Card>
         <textarea id="iview_admin_markdown_editor" style="display:none;"></textarea>
       </Card>
@@ -34,6 +39,8 @@ export default {
       sign: '',
       isEdit: this.$route.params.id ? true : false, // 是否为编辑状态
       simplemde: null,
+      tagList: [],
+      tagId: null,
     };
   },
   mounted() {
@@ -42,6 +49,7 @@ export default {
     } else {
       this.init();
     }
+    this.getTag();
   },
   methods: {
     init() {
@@ -66,6 +74,10 @@ export default {
         this.$Message.error('请选择文章标签');
         return false;
       }
+      if (!this.tagId) {
+        this.$Message.error('请选择文章标签');
+        return false;
+      }
       if (!this.simplemde.value()) {
         this.$Message.error('请输入文章内容');
         return false;
@@ -82,6 +94,7 @@ export default {
         html: this.simplemde.markdown(this.simplemde.value()),
         intro: this.intro,
         sign: this.sign,
+        tagid: this.tagId,
       }).then(() => {
         this.$Message.success('发表成功');
         this.$router.push({ name: 'learn_list' });
@@ -94,6 +107,7 @@ export default {
           this.title = res.data.data.title;
           this.md = res.data.data.md;
           this.sign = res.data.data.sign;
+          this.tagId = res.data.data.tagid;
           this.init();
         });
     },
@@ -107,10 +121,17 @@ export default {
         html: this.simplemde.markdown(this.simplemde.value()),
         intro: this.intro,
         sign: this.sign,
+        tagid: this.tagId,
       }).then(() => {
         this.$Message.success('更新成功');
         this.$router.push({ name: 'learn_list' });
       });
+    },
+    getTag() { // 获取文章标签
+      this.$http.get(this.API.article_tag)
+        .then(res => {
+          this.tagList = res.data.data;
+        });
     },
   },
 };
