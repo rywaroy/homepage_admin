@@ -12,7 +12,7 @@ export default {
   learn_delete: '/learn/',
   learn_add: '/learn',
   learn_info: '/learn/',
-  learn_update: '/learn/update',
+  learn_update: '/learn/',
   album_list: '/album',
   album_delete: '/album/',
   album_group(id) {
